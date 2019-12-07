@@ -19,3 +19,4 @@ interface eth0{
         AdvRDNSSLifetime ;#
     };#
 };
+http://ym125.cc/20170815/linux-pppoe-server/
