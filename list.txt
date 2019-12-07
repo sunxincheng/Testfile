@@ -1,1 +1,21 @@
-This is test document
+interface eth0{
+    AdvSendAdvert on;           #启用路由器公告（RA）功能
+    MinRtrAdvInterval ;       #每隔30-100秒间隔发送公告消息
+    MaxRtrAdvInterval ;        #spf
+    AdvManagedFlag on;          # M值
+    AdvOtherConfigFlag on;      # O 值#spf
+    prefix :db8::::/    #发送的前缀信息
+    {
+        AdvOnLink on;
+        AdvAutonomous on;   #公告的前缀可用来自动位置配置
+        AdvRouterAddr off;
+    };
+    #DNS部分未经过测试#RDNSS#
+    RDNS :db8::::   #提供RA的DNS选项，目前支持RFC6106支持的普遍性不高
+    #例如WIN7尚未支持RFC6106，所以并不会取得RA的DNS选项
+    #这部分就需要通过DHCPv6来解决#
+    {#
+        AdvRDNSSPreference ;#
+        AdvRDNSSLifetime ;#
+    };#
+};
